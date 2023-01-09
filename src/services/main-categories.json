@@ -1,0 +1,106 @@
+[
+    {
+        "type": "category",
+        "blockPosition":"first",
+        "heading": "Dresses",
+        "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673253511/amazon/dresses_fv7rxu.jpg",
+        "linkTxt": "Shop now",
+        "linkUrl": ""
+    },
+    {
+        "type": "category",
+        "blockPosition":"first",
+        "heading": "FREE Shipping to Israel",
+        "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673253510/amazon/shipping_zxj6ux.jpg",
+        "linkTxt": "on qualifying orders over USD $49",
+        "linkUrl": ""
+    },
+    {
+        "type": "gallery",
+        "blockPosition":"first",
+        "heading": "Gaming accessories",
+        "imgs:": [
+            {
+                "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673253510/amazon/gaming1_sxmgal.jpg",
+                "txt": "Headers"
+            },
+            {
+                "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673253512/amazon/gaming2_udzn7j.jpg",
+                "txt": "Keyboards"
+            },
+            {
+                "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673253511/amazon/gaming3_y9lino.jpg",
+                "txt": "Computer mice"
+            },
+            {
+                "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673253512/amazon/gaming4_ffvtgc.jpg",
+                "txt": "Chairs"
+            }
+        ],
+        "linkTxt": "See more",
+        "linkUrl": ""
+    },
+    {
+        "type": "container",
+        "blockPosition":"first",
+        "heading": "Get fit at home",
+        "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673253511/amazon/home-fitness_nvnopb.jpg",
+        "linkTxt": "Explore now",
+        "linkUrl": ""
+    },
+    {
+        "type": "category",
+        "blockPosition":"first",
+        "heading": "Health & Personal Care",
+        "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673253512/amazon/health_axgprv.jpg",
+        "linkTxt": "Shop now",
+        "linkUrl": ""
+    },
+    {
+        "type": "container",
+        "blockPosition":"first",
+        "heading": "Sign in for the best experience",
+        "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673253511/amazon/signin-shipping-img_m4lsos.jpg",
+        "linkTxt": "Sign in securely",
+        "linkUrl": ""
+    },
+    {
+        "type": "gallery",
+        "blockPosition":"first",
+        "heading": "Shop by Category",
+        "imgs:": [
+            {
+                "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673253511/amazon/category1_p1jpyb.jpg",
+                "txt": "Computers & Accessories"
+            },
+            {
+                "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673253511/amazon/category2_wvla6a.jpg",
+                "txt": "Video games"
+            },
+            {
+                "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673253511/amazon/categoty3_mumhf6.jpg",
+                "txt": "Baby"
+            },
+            {
+                "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673253511/amazon/category4_xwvqwr.jpg",
+                "txt": "Toys & Games"
+            }
+        ]
+    },
+    {
+        "type": "category",
+        "blockPosition":"first",
+        "heading": "Easy returns",
+        "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673253511/amazon/returns_qbpvma.jpg",
+        "linkTxt": "Learn more",
+        "linkUrl": ""
+    },
+    {
+        "type": "category",
+        "blockPosition":"first",
+        "heading": "Electronics",
+        "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673253511/amazon/electronics_kbccqt.jpg",
+        "linkTxt": "See more",
+        "linkUrl": ""
+    }
+]

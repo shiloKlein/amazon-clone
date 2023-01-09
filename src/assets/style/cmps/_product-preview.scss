@@ -1,0 +1,44 @@
+.product-preview {
+    position: relative;
+    background-color: #F8F8F8;
+
+    .preview-img {
+        margin: auto;
+        height: 290px;
+        display: grid;
+        object-fit: contain;
+        place-content: center;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .description {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        /* start showing ellipsis when 3rd line is reached */
+        white-space: pre-wrap;
+        /* let the text wrap preserving spaces */
+    }
+
+    .star {
+        color: $secondery-orange;
+        font-variation-settings:
+            'FILL' 1,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 48;
+    }
+
+    .amazon-choise,
+    .best-seller {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding:0.3em;
+    background-color: rgba(255, 255, 255, 0.974);
+    }
+}

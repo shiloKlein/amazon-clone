@@ -1,0 +1,9 @@
+.products-list {
+    ul {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 290px));
+        gap:30px;
+        place-content: center;
+    }
+}
