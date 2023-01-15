@@ -7,7 +7,7 @@ export function List(props) {
             <ul>
                 {props.products.map(product => <li>
                     {/* <p>{JSON.stringify(product)}</p> */}
-                    <Preview product={product}></Preview>
+                    <Preview product={product} addToCart={props.addToCart}></Preview>
                 </li>)}
             </ul>
         </section>

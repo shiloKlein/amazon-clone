@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export function Preview(props) {
+export function CartPreview(props) {
     const { product } = props
 
     return (

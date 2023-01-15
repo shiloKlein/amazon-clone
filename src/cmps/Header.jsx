@@ -1,16 +1,32 @@
-import { NavLink, useNavigate } from 'react-router-dom'
-
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { auth } from '../services/firebase'
 
 import logo from '../assets/imgs/logo/header-logo.png'
 import React from 'react'
 
 export function Header() {
+    const dispatch = useDispatch()
+    const cartItems = useSelector(state => state.cartModule.cartItems)
+    const user = useSelector(state => state.userModule.loggedInUser)
+    console.log(user);
+
+    const handleAuth = () => {
+        if (user) {
+            auth.signOut()
+            dispatch({
+                type: "LOG_OUT",
+            })
+        }
+    }
+
     return (
         <header className="header full main-layout">
             <div className='flex align-center'>
-                <NavLink to="/">
+                <Link to="/">
                     <img className="header-logo" src={logo} alt="bobo" />
-                </NavLink>
+                </Link>
+
                 <div className="header-search flex align-center">
                     <input className="serch-input" type="text" />
                     <span className="material-symbols-outlined">
@@ -19,25 +35,29 @@ export function Header() {
                 </div>
 
                 <nav className="header-nav flex space-evenly">
-                    <div className="header-option">
+
+                    <div className="header-option"
+                        onClick={handleAuth}>
                         hello guest
-                        <span >Sign in</span>
+                        <Link to={!user &&'/login'}><span >{user ? 'Log out' : 'Log in'}</span></Link>
                     </div>
+
                     <div className="header-option">
                         Returns
                         <span >& orders </span>
                     </div>
+
                     <div className="header-option">
                         Your
                         <span>Prime</span>
                     </div>
-                    <NavLink to="/checkout" >
-                        <div className="header-option-basket flex align-center">
+
+                    <NavLink to="/checkout" className="flex align-center">
+                        <div className="header-option-basket flex align-center" title="go to cart">
                             <span className="material-symbols-outlined">
                                 shopping_basket
                             </span>
-                            <span>0</span>
-
+                            <span>{cartItems.length}</span>
                         </div>
                     </NavLink>
                 </nav>

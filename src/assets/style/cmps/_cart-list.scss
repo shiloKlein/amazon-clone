@@ -1,0 +1,9 @@
+.cart-list {
+    ul {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 150px));
+        gap:30px;
+        place-content: center;
+    }
+}

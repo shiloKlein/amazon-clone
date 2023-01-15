@@ -5,7 +5,7 @@
         "isAmazonChoise":true,
         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/pen1_mgbjih.jpg",
         "description": "Apple Pencil (2nd Generation)",
-        "price":null,
+        "price":100,
         "rate":5,
         "id": 101
     },
@@ -15,7 +15,7 @@
         "isAmazonChoise":false,
         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/keyboard_ksuxek.jpg",
         "description": "Logitech MK270 Wireless Keyboard And Mouse Combo For Windows, 2.4 GHz Wireless, Compact Mouse, 8 Multimedia And Shortcut Keys, For PC, Laptop - Black",
-        "price":null,
+        "price":20,
         "rate":4,
         "id": 102
     },
@@ -25,7 +25,7 @@
         "isAmazonChoise":true,
         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/memory_sqv3u7.jpg",
         "description": "Seagate Portable 2TB External Hard Drive HDD — USB 3.0 for PC, Mac, PlayStation, & Xbox -1-Year Rescue Service (STGX2000400)",
-        "price":null,
+        "price":49,
         "rate":4,
         "id": 103
     },
@@ -35,7 +35,7 @@
         "isAmazonChoise":true,
         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/ink1_vt3g85.jpg",
         "description": "Original HP 67XL Black High-yield Ink Cartridge | Works with HP DeskJet 1255, 2700, 4100 Series, HP ENVY 6000, 6400 Series | Eligible for Instant Ink | 3YM57AN",
-        "price":null,
+        "price":34,
         "rate":5,
         "id": 104
     },
@@ -45,7 +45,7 @@
         "isAmazonChoise":false,
         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/ink2_kxgkzk.jpg",
         "description": "Original HP 67 Black/Tri-color Ink Cartridges (2 Count - Pack of 1) | Works with HP DeskJet 1255, 2700, 4100 Series, HP ENVY 6000, 6400 Series | Eligible for Instant Ink | 3YP29AN",
-        "price":null,
+        "price":83,
         "rate":5,
         "id": 105
     },
@@ -55,7 +55,7 @@
         "isAmazonChoise":false,
         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/pen2_qmki4t.jpg",
         "description": "Stylus Pen for iPad with Palm Rejection& Fast Charge, Active Pencil Compatible with (2018-2022) Apple iPad Pro (11/12.9 Inch),iPad Air 3/4/5,iPad10/9/8/7/6, iPad Mini 5/6",
-        "price":null,
+        "price":84,
         "rate":5,
         "id": 106
     },
@@ -65,7 +65,7 @@
         "isAmazonChoise":false,
         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/camera_hxjne0.jpg",
         "description": "Logitech C920x HD Pro Webcam, Full HD 1080p/30fps Video Calling, Clear Stereo Audio, HD Light Correction, Works with Skype, Zoom, FaceTime, Hangouts, PC/Mac/Laptop/Macbook/Tablet - Black",
-        "price":null,
+        "price":89,
         "rate":5,
         "id": 107
     },
@@ -75,7 +75,7 @@
         "isAmazonChoise":false,
         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/screen_bz486i.jpg",
         "description": "Sceptre 24\" Professional Thin 75Hz 1080p LED Monitor 2x HDMI VGA Build-in Speakers, Machine Black (E248W-19203R Series)",
-        "price":null,
+        "price":12,
         "rate":5,
         "id": 108
     },

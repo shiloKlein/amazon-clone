@@ -1,0 +1,21 @@
+@mixin link-default{
+    
+    &:visited {
+        text-decoration: underline;
+        color: purple;
+    }
+
+    &:link {
+        text-decoration: underline;
+        color: blue;
+    }
+
+    &:active {
+        text-decoration: underline;
+        color: green;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

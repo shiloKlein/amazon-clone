@@ -1,4 +1,5 @@
 @import './setup/variables';
+@import './setup/mixins';
 
 
 @import './base/base';
@@ -11,6 +12,11 @@
 @import './cmps/product';
 @import './cmps/product-list';
 @import './cmps/product-preview';
+@import './cmps/cart-list';
+@import './cmps/cart-preview';
+@import './cmps/subtotal';
 
 // pages
 @import './pages/home';
+@import './pages/checkout';
+@import './pages/login-page';
