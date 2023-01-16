@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 // import { loadRobots, removeRobot, setFilterBy } from '../store/actions/robot.actions'
 import { Header } from '../cmps/Header'
-import { SideNav } from '../cmps/SideNav'
+import { SideFilter } from '../cmps/SideFilter'
 import { ProductFilter } from '../cmps/ProductFilter'
 
 // import products from '../services/product.json'
@@ -17,7 +17,7 @@ export function Home() {
     useEffect(() => {
         loadProducts()
         document.title = 'Amazon clone'
-    },[])
+    }, [])
     const dispatch = useDispatch()
     const cartItems = useSelector(state => state.cartModule.cartItems)
     const products = useSelector(state => state.cartModule.products)
@@ -47,14 +47,14 @@ export function Home() {
         <>
             <Header />
 
-            <section className='home'>
-                <div className="home-container flex justify-center">
+            <section className='home flex full'>
+                <SideFilter filterBy={filterBy} setFilterBy={setFilterBy}/>
+                <div className="home-container flex column justify-center">
                     <img className="hero-img" src="https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673196706/amazon/amazon-hero_oukiiy.jpg" alt="bobo" />
-                </div>
-                <ProductFilter filterBy={filterBy} setFilterBy={setFilterBy}/>
                 <div>
-                    <SideNav />
+                <ProductFilter filterBy={filterBy} setFilterBy={setFilterBy} />
                     {products && <List products={products} addToCart={addToCart}></List>}
+                </div>
                 </div>
             </section>
         </>

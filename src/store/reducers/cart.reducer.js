@@ -9,8 +9,8 @@ const INITIAL_STATE = {
         category: '',
         minPrice: 0,
         maxPrice: Infinity,
-        rate: 0,
-        bestSeller: 'all'
+        minRate: 0,
+        bestSeller: false
     }
 }
 
@@ -21,10 +21,22 @@ export function cartReducer(state = INITIAL_STATE, action) {
             let regex = new RegExp(state.filterBy.text, "i");
             // let result = regex.test(product.decription)||regex.test(product.category);
 
-            let filteredProducts = productsFromOutside.filter(product=>{
+            let filteredProducts = productsFromOutside.filter(product => {
                 console.log(state.filterBy.text, regex.test(product.category))
                 // console.log('filteredProducts',filteredProducts)
-                return regex.test(product.description)||regex.test(product.category)})
+                return regex.test(product.description) || regex.test(product.category)
+            })
+            filteredProducts = filteredProducts.filter(product => {
+                if (state.filterBy.category === '') return true
+                return product.category === state.filterBy.category
+            })
+            filteredProducts = filteredProducts.filter(product => {
+                if (!state.filterBy.bestSeller) return true
+                return product.isBestSeller
+            })
+            filteredProducts = filteredProducts.filter(product => {
+                return product.rate>=+state.filterBy.minRate
+            })
             return {
                 ...state, products: filteredProducts
             }
@@ -44,7 +56,7 @@ export function cartReducer(state = INITIAL_STATE, action) {
         case 'SET_FILTER_BY':
             console.log(state.filterBy)
             return {
-                ...state,   filterBy: {...action.filterBy}
+                ...state, filterBy: { ...action.filterBy }
             }
         default:
             return state
