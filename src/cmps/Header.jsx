@@ -9,7 +9,6 @@ export function Header() {
     const dispatch = useDispatch()
     const cartItems = useSelector(state => state.cartModule.cartItems)
     const user = useSelector(state => state.userModule.loggedInUser)
-    console.log(user);
 
     const handleAuth = () => {
         if (user) {
