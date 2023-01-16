@@ -19,6 +19,7 @@
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
+        height: 65px;
         /* start showing ellipsis when 3rd line is reached */
         white-space: pre-wrap;
         /* let the text wrap preserving spaces */

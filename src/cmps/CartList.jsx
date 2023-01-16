@@ -6,11 +6,11 @@ export function CartList(props) {
     console.log(props.cartItems);
 
     return (
-        <section className='cart-list'>
+        <section className={`${props.payment?'payment ':''}cart-list`}>
             <ul>
                 {props.cartItems.length && props.cartItems.map(product => <li>
                     {/* <p>{JSON.stringify(product)}</p> */}
-                    <CartPreview product={product} removeFromCart={props.removeFromCart}></CartPreview>
+                    <CartPreview payment={props.payment} product={product} removeFromCart={props.removeFromCart}></CartPreview>
                 </li>)}
             </ul>
         </section>

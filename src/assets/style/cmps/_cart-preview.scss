@@ -1,7 +1,8 @@
 .cart-preview {
     position: relative;
     background-color: #F8F8F8;
-    height: 250px;
+    height: 280px;
+    flex-direction: row;
 
     .preview-img {
         margin: auto;
@@ -20,6 +21,8 @@
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
+        height: 65px;
+
         /* start showing ellipsis when 3rd line is reached */
         white-space: pre-wrap;
         /* let the text wrap preserving spaces */
@@ -36,10 +39,17 @@
 
     .amazon-choise,
     .best-seller {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding:0.3em;
-    background-color: rgba(255, 255, 255, 0.974);
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0.3em;
+        background-color: rgba(255, 255, 255, 0.974);
+    }
+
+    &.payment {
+    button{
+    width: 40%;
+    align-self: center;
+    }
     }
 }

@@ -5,7 +5,7 @@ export function Preview(props) {
     const { product } = props
 
     return (
-        <section className={`${props.addToCart?'product':'cart'}-preview flex column`}>
+        <section className='product-preview flex column space-between'>
             {product.isAmazonChoise && !product.isBestSeller &&
                 <span className='amazon-choise'>
                     <span className="">Amazon's </span>

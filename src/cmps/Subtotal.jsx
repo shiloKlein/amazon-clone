@@ -1,8 +1,10 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export function Subtotal(props) {
+    const navigate = useNavigate()
     let itemsCount = props.cartItems?.length || 0
-    
+
     const calcTotal = () => {
         return props.cartItems.reduce((acc, item) => acc + item.price || 0, 0)
     }
@@ -18,7 +20,7 @@ export function Subtotal(props) {
                 <label for="gift-checkbox">
                     This order contains a gift</label>
             </div>
-            <button>checkout</button>
+            <button onClick={(ev) => navigate('/payment')}>checkout</button>
         </section>
     )
 }

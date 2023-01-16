@@ -5,7 +5,7 @@ export function CartPreview(props) {
     const { product } = props
 
     return (
-        <section className={`${props.addToCart?'product':'cart'}-preview flex column`}>
+        <section className={`${props.payment?'payment ':''}cart-preview flex column`}>
             {product.isAmazonChoise && !product.isBestSeller &&
                 <span className='amazon-choise'>
                     <span className="">Amazon's </span>
