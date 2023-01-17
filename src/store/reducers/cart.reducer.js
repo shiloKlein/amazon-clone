@@ -1,4 +1,5 @@
 import productsFromOutside from '../../services/product.json'
+import getUserById from '../../services/productService'
 
 
 const INITIAL_STATE = {
@@ -20,8 +21,8 @@ export function cartReducer(state = INITIAL_STATE, action) {
         case 'SET_PRODUCTS':
             let regex = new RegExp(state.filterBy.text, "i");
             // let result = regex.test(product.decription)||regex.test(product.category);
-
-            let filteredProducts = productsFromOutside.filter(product => {
+console.log('action.products',action.products)
+            let filteredProducts = action.products.filter(product => {
                 console.log(state.filterBy.text, regex.test(product.category))
                 // console.log('filteredProducts',filteredProducts)
                 return regex.test(product.description) || regex.test(product.category)

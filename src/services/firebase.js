@@ -1,6 +1,9 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc, updateDoc, getDocs, doc, deleteDoc, getDoc } from "firebase/firestore";
+
 
 
 
@@ -13,9 +16,16 @@ const firebaseConfig = {
     appId: "1:567048292275:web:a0425c87727887bd76adc6"
 }
 
-firebase.initializeApp(firebaseConfig)
+// firebase.initializeApp(firebaseConfig)
+const app = initializeApp(firebaseConfig);
 
-const db = firebase.firestore;
+// const db = firebase.firestore;
+const db = getFirestore(app);
 const auth = getAuth()
 
-export { db, auth ,createUserWithEmailAndPassword, signInWithEmailAndPassword}
+
+
+export {
+    db, auth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+    collection, addDoc, getDocs, updateDoc, doc, deleteDoc, getDoc
+}

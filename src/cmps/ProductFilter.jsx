@@ -12,8 +12,8 @@ export function ProductFilter(props) {
 
     return (
 
-        <div>
+        <section className='product-filter'>
             <input type="text" onChange={setFilter} value={filterBy} placeHolder="search for product" />
-        </div>
+        </section>
     )
 }

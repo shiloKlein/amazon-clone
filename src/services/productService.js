@@ -1,0 +1,312 @@
+import { db, collection, addDoc, getDocs, updateDoc, doc, deleteDoc, getDoc } from './firebase'
+
+export const productService = {
+    postProduct, putProduct, query, getById, remove
+}
+const dbColection = 'product'
+// const products = [
+//     {
+//         "category": "computers",
+//         "isBestSeller": false,
+//         "isAmazonChoise": true,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/pen1_mgbjih.jpg",
+//         "description": "Apple Pencil (2nd Generation)",
+//         "price": 100,
+//         "rate": 5,
+//         "id": 101
+//     },
+//     {
+//         "category": "computers",
+//         "isBestSeller": true,
+//         "isAmazonChoise": false,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/keyboard_ksuxek.jpg",
+//         "description": "Logitech MK270 Wireless Keyboard And Mouse Combo For Windows, 2.4 GHz Wireless, Compact Mouse, 8 Multimedia And Shortcut Keys, For PC, Laptop - Black",
+//         "price": 20,
+//         "rate": 4,
+//         "id": 102
+//     },
+//     {
+//         "category": "computers",
+//         "isBestSeller": true,
+//         "isAmazonChoise": true,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/memory_sqv3u7.jpg",
+//         "description": "Seagate Portable 2TB External Hard Drive HDD — USB 3.0 for PC, Mac, PlayStation, & Xbox -1-Year Rescue Service (STGX2000400)",
+//         "price": 49,
+//         "rate": 4,
+//         "id": 103
+//     },
+//     {
+//         "category": "computers",
+//         "isBestSeller": false,
+//         "isAmazonChoise": true,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/ink1_vt3g85.jpg",
+//         "description": "Original HP 67XL Black High-yield Ink Cartridge | Works with HP DeskJet 1255, 2700, 4100 Series, HP ENVY 6000, 6400 Series | Eligible for Instant Ink | 3YM57AN",
+//         "price": 34,
+//         "rate": 5,
+//         "id": 104
+//     },
+//     {
+//         "category": "computers",
+//         "isBestSeller": false,
+//         "isAmazonChoise": false,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/ink2_kxgkzk.jpg",
+//         "description": "Original HP 67 Black/Tri-color Ink Cartridges (2 Count - Pack of 1) | Works with HP DeskJet 1255, 2700, 4100 Series, HP ENVY 6000, 6400 Series | Eligible for Instant Ink | 3YP29AN",
+//         "price": 83,
+//         "rate": 5,
+//         "id": 105
+//     },
+//     {
+//         "category": "computers",
+//         "isBestSeller": false,
+//         "isAmazonChoise": false,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/pen2_qmki4t.jpg",
+//         "description": "Stylus Pen for iPad with Palm Rejection& Fast Charge, Active Pencil Compatible with (2018-2022) Apple iPad Pro (11/12.9 Inch),iPad Air 3/4/5,iPad10/9/8/7/6, iPad Mini 5/6",
+//         "price": 84,
+//         "rate": 5,
+//         "id": 106
+//     },
+//     {
+//         "category": "computers",
+//         "isBestSeller": true,
+//         "isAmazonChoise": false,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/camera_hxjne0.jpg",
+//         "description": "Logitech C920x HD Pro Webcam, Full HD 1080p/30fps Video Calling, Clear Stereo Audio, HD Light Correction, Works with Skype, Zoom, FaceTime, Hangouts, PC/Mac/Laptop/Macbook/Tablet - Black",
+//         "price": 89,
+//         "rate": 5,
+//         "id": 107
+//     },
+//     {
+//         "category": "computers",
+//         "isBestSeller": true,
+//         "isAmazonChoise": false,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/screen_bz486i.jpg",
+//         "description": "Sceptre 24\" Professional Thin 75Hz 1080p LED Monitor 2x HDMI VGA Build-in Speakers, Machine Black (E248W-19203R Series)",
+//         "price": 12,
+//         "rate": 5,
+//         "id": 108
+//     },
+//     {
+//         "category": "computers",
+//         "isBestSeller": false,
+//         "isAmazonChoise": false,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/memory2_lsx9zg.jpg",
+//         "description": "SAMSUNG 970 EVO Plus SSD 2TB NVMe M.2 Internal Solid State Drive w/ V-NAND Technology, Storage and Memory Expansion for Gaming, Graphics w/ Heat Control, Max Speed, MZ-V7S2T0B/AM",
+//         "price": 179,
+//         "rate": 3,
+//         "id": 109
+//     },
+//     {
+//         "category": "computers",
+//         "isBestSeller": true,
+//         "isAmazonChoise": false,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/screen-holder_mh1hqe.jpg",
+//         "description": "HUANUO Dual Monitor Stand, Adjustable Spring Monitor Desk Mount for 17-27 inch, Dual Monitor Mount Holds Max 14.3lbs, Computer Monitor Arms with Wide Range of Motion for Home Office",
+//         "price": 61,
+//         "rate": 5,
+//         "id": 110
+//     },
+//     {
+//         "category": "computers",
+//         "isBestSeller": false,
+//         "isAmazonChoise": false,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/laptop_eopu5z.jpg",
+//         "description": "Lenovo 2022 Newest Ideapad 3 Laptop, 15.6\" HD Touchscreen, 11th Gen Intel Core i3-1115G4 Processor, 8GB DDR4 RAM, 256GB PCIe NVMe SSD, HDMI, Webcam, Wi-Fi 5, Bluetooth, Windows 11 Home, Almond",
+//         "price": 395,
+//         "rate": 5,
+//         "id": 111
+//     },
+//     {
+//         "category": "computers",
+//         "isBestSeller": true,
+//         "isAmazonChoise": false,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/micro-sd_bmbeok.jpg",
+//         "description": "Amazon Basics microSDXC Memory Card with Full Size Adapter, A2, U3, Read Speed up to 100 MB/s, 128 GB",
+//         "price": 13,
+//         "rate": 5,
+//         "id": 112
+//     },
+//     {
+//         "category": "accessories",
+//         "isBestSeller": false,
+//         "isAmazonChoise": false,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673871546/amazon/product/accessories1_qdg7fr.webp",
+//         "description": "LAPOHI 3 PCS Hair Side Combs Hair Pins for Bun, Large U Shaped Hair Sticks Forks Combs for Updo Vintage Hairstyle Hair Accessories(Black&Gold&Silver)",
+//         "price": 13,
+//         "rate": 2,
+//         "id": 113
+//     },
+//     {
+//         "category": "accessories",
+//         "isBestSeller": false,
+//         "isAmazonChoise": false,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673871546/amazon/product/accessories2_gu2emr.jpg",
+//         "description": "AIUPUOC Valentine's Day Heart Headband Red Sequins Hair Band Hair Hoop Hair Accessories Red Love Heart Shaped Sequin Design Headbands Hair Holiday Decoration Hair Clasp Hairpin Headwear Gift 1Pcs",
+//         "price": 7,
+//         "rate": 3,
+//         "id": 114
+//     },
+//     {
+//         "category": "accessories",
+//         "isBestSeller": true,
+//         "isAmazonChoise": false,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673871546/amazon/product/accessories3_xwh6zl.jpg",
+//         "description": "BAGSMART Large Toiletry Bag for Women, Cosmetic Makeup Bag Organizer with Handle, Travel Bag for Toiletries, Travel Accessories, Full Sized Container, Black-L",
+//         "price": 31,
+//         "rate": 5,
+//         "id": 115
+//     },
+//     {
+
+//         "category": "shoes",
+//         "isBestSeller": true,
+//         "isAmazonChoise": false,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673872004/amazon/product/shoes1_ffc9wi.webp",
+//         "description": "Soda Glove - Ankle Boot w/Lug Sole Elastic Gore and Chunky Heel",
+//         "price": 59,
+//         "rate": 5,
+//         "id": 116
+//     },
+//     {
+//         "category": "shoes",
+//         "isBestSeller": false,
+//         "isAmazonChoise": false,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673872004/amazon/product/shoes2_ubojw4.webp",
+//         "description": "Under Armour Men's Charged Assert 9 Running Shoe",
+//         "price": 124,
+//         "rate": 4,
+//         "id": 117
+//     },
+//     {
+//         "category": "shoes",
+//         "isBestSeller": true,
+//         "isAmazonChoise": false,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673872004/amazon/product/shoes3_pkei6v.webp",
+//         "description": "Hey Dude Men's Wally Funk-Multiple Colors and Size | Men’s Shoes | Comfortable & Light-Weight",
+//         "price": 90,
+//         "rate": 5,
+//         "id": 118
+//     },
+//     {
+//         "category": "tools",
+//         "isBestSeller": true,
+//         "isAmazonChoise": false,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673872193/amazon/product/tools1_nazss9.webp",
+//         "description": "STREBITO Screwdriver Sets 142-Piece Electronics Precision Screwdriver with 120 Bits Magnetic Repair Tool Kit for iPhone, MacBook, Computer, Laptop, PC, Tablet, PS4, Xbox, Nintendo, Game Console",
+//         "price": 28,
+//         "rate": 5,
+//         "id": 119
+//     },
+//     {
+//         "category": "tools",
+//         "isBestSeller": false,
+//         "isAmazonChoise": true,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673872193/amazon/product/tools2_dy6evq.webp",
+//         "description": "DEWALT TSTAK Tool Box, Deep (DWST17806) , Black",
+//         "price": 35,
+//         "rate": 5,
+//         "id": 120
+//     },
+//     {
+//         "category": "tools",
+//         "isBestSeller": false,
+//         "isAmazonChoise": true,
+//         "imgUrl": "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673872193/amazon/product/tools3_ndaift.webp",
+//         "description": "CRAFTSMAN V20 MAX Cordless Drill and Impact Driver, Power Tool Combo Kit with 2 Batteries and Charger (CMCK210C2",
+//         "price": 139,
+//         "rate": 5,
+//         "id": 121
+//     }
+// ]
+
+// products.forEach(async product => {
+//     console.log('product',product)
+//     delete product.id
+//     await postProduct(product)
+// })
+
+async function postProduct(product) {
+    try {
+        // post
+        const docRef = await addDoc(collection(db, dbColection), product);
+        console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+        console.error("Error adding document: ", e);
+    }
+}
+async function putProduct(id) {
+    const washingtonRef = doc(db, dbColection, id);
+    // Set the "capital" field of the city 'DC'
+    await updateDoc(washingtonRef, {
+        capital: true
+    });
+
+}
+
+async function query() {
+    const products = []
+    const querySnapshot = await getDocs(collection(db, dbColection));
+    querySnapshot.forEach((doc) => {
+        // console.log(`${doc.id} => ${doc.data()}`)
+        products.push(doc.data())
+    });
+    return products;
+}
+async function getById(id) {
+    const docRef = doc(db, dbColection, id);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+}
+async function remove(id) {
+    await deleteDoc(doc(db, dbColection, id));
+}
+
+async function boo() {
+    // try {
+    //     // post
+    //     const docRef = await addDoc(collection(db, "product"), {
+    //         category: "computers",
+    //         isBestSeller: true,
+    //         isAmazonChoise: false,
+    //         imgUrl: "https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673256789/amazon/product/keyboard_ksuxek.jpg",
+    //         description: "Logitech MK270 Wireless Keyboard And Mouse Combo For Windows, 2.4 GHz Wireless, Compact Mouse, 8 Multimedia And Shortcut Keys, For PC, Laptop - Black",
+    //         price: 20,
+    //         rate: 4,
+    //         id: "102"
+    //     });
+    //     console.log("Document written with ID: ", docRef.id);
+    // } catch (e) {
+    //     console.error("Error adding document: ", e);
+    // }
+    // get
+    const querySnapshot = await getDocs(collection(db, "product"));
+    querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
+    });
+
+    const docRef = doc(db, "product", "NCCd1jdxzsfH1SfHROMK");
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+    // // put
+    // const washingtonRef = doc(db, "cities", "DC");
+    // // Set the "capital" field of the city 'DC'
+    // await updateDoc(washingtonRef, {
+    //     capital: true
+    // });
+    // // delete
+    // await deleteDoc(doc(db, "cities", "DC"));
+}
+
+// export {
+//     postProduct, putProduct, query, getById, remove
+// }

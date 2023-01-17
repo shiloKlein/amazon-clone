@@ -2,10 +2,12 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { auth } from '../services/firebase'
 
+import { ProductFilter } from './ProductFilter'
+
 import logo from '../assets/imgs/logo/header-logo.png'
 import React from 'react'
 
-export function Header() {
+export function Header(props) {
     const dispatch = useDispatch()
     const cartItems = useSelector(state => state.cartModule.cartItems)
     const user = useSelector(state => state.userModule.loggedInUser)
@@ -27,7 +29,8 @@ export function Header() {
                 </Link>
 
                 <div className="header-search flex align-center">
-                    <input className="serch-input" type="text" />
+                    {/* <input className="serch-input" type="text" /> */}
+                    <ProductFilter filterBy={props.filterBy} setFilterBy={props.setFilterBy}/>
                     <span className="material-symbols-outlined">
                         search
                     </span>

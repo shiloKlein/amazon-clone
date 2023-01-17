@@ -1,5 +1,5 @@
 .header {
-    height: 60px;
+    height: 8vh;
     display: flex;
     align-items: center;
     background-color: #e4e4e4;
@@ -10,6 +10,7 @@
     .header-logo {
         width: 100px;
         object-fit: contain;
+        margin-inline-end: 20px;
         // margin: 18 20px 0 20px;
 
         &:hover {
@@ -20,6 +21,11 @@
 
     .header-search {
         flex: 1;
+        min-width: 140px;
+
+        .product-filter {
+            width: 100%;
+        }
 
         input {
             height: 24px;
@@ -60,7 +66,8 @@
     }
 
     .header-option-basket {
-gap:5px;
+        gap: 5px;
+
         &:hover {
             cursor: pointer;
         }
