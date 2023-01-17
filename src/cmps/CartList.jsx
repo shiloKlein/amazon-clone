@@ -3,7 +3,6 @@ import React from 'react'
 import { CartPreview } from './CartPreview'
 
 export function CartList(props) {
-    console.log(props.cartItems);
 
     return (
         <section className={`${props.payment?'payment ':''}cart-list`}>

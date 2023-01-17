@@ -30,7 +30,7 @@ export function Header(props) {
 
                 <div className="header-search flex align-center">
                     {/* <input className="serch-input" type="text" /> */}
-                    <ProductFilter filterBy={props.filterBy} setFilterBy={props.setFilterBy}/>
+                    <ProductFilter filterBy={props.filterBy} setFilterBy={props.setFilterBy} />
                     <span className="material-symbols-outlined">
                         search
                     </span>
@@ -40,8 +40,9 @@ export function Header(props) {
 
                     <div className="header-option"
                         onClick={handleAuth}>
-                        hello guest
-                        <Link to={!user &&'/login'}><span >{user ? 'Log out' : 'Log in'}</span></Link>
+                        {`hello ${user? user.username : 'guest'}`}
+
+                        <Link to={!user && '/login'}><span >{user ? 'Log out' : 'Log in'}</span></Link>
                     </div>
 
                     <div className="header-option">

@@ -2,10 +2,15 @@ import React from 'react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { userService } from '../services/userService.js'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { userSignUp } from '../store/actions/user.actions'
 
 export function Login() {
+    const dispatch = useDispatch()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [username, setUsername] = useState('')
     const navigate = useNavigate()
 
 
@@ -22,6 +27,7 @@ export function Login() {
     const signup = async (ev) => {
         try {
             await userService.signup(email, password)
+            dispatch(userSignUp(username, email, password))//needed because the auth procces of firebase dont allow saving more details on the user like prev orders
             navigate("/")
         } catch (err) {
             console.log(err);
@@ -37,6 +43,11 @@ export function Login() {
                 <h1>Log in </h1>
 
                 <form className='flex column align-center'>
+
+                    <label htmlFor="username-input" >user name</label>
+                    <input type="text" value={email}
+                        onChange={ev => setUsername(ev.target.value)}
+                        placeholder='write your username here' required />
 
                     <label htmlFor="email-input" >email</label>
                     <input type="email" value={email}

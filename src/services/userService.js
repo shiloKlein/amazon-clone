@@ -7,7 +7,7 @@ const dbColection = 'user'
 export const userService = {
     login,
     signup
-    , post, update, query, getById, remove
+    , post, update, query, remove, getByEmail
 }
 
 async function login(email, password) {
@@ -22,18 +22,14 @@ async function login(email, password) {
 async function signup(email, password) {
     try {
         const authRes = await createUserWithEmailAndPassword(auth, email, password)
-        console.log('auth', authRes)
     } catch (err) {
         throw new Error(err.message)
     }
 }
 
-async function post() {
+async function post(user) {
     try {
-        // post
-        const docRef = await addDoc(collection(db, dbColection), {
-          
-        });
+        const docRef = await addDoc(collection(db, dbColection, user.username), user);
         console.log("Document written with ID: ", docRef.id);
     } catch (e) {
         console.error("Error adding document: ", e);
@@ -53,16 +49,17 @@ async function query() {
         console.log(`${doc.id} => ${doc.data()}`);
     });
 }
-async function getById(id) {
-    const docRef = doc(db, dbColection, id);
+async function getByEmail(email) {
+    const docRef = doc(db, dbColection, email);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
+        return docSnap.data();
     } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
     }
 }
+
 async function remove(id) {
     await deleteDoc(doc(db, dbColection, id));
 }

@@ -8,7 +8,6 @@ export function SideFilter(props) {
   const setCategoryFilter = (category) => {
     setSelected(category||'all')
     filter.category = category
-    console.log(filter);
     props.setFilterBy(filter)
   }
 

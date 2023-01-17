@@ -21,10 +21,7 @@ export function cartReducer(state = INITIAL_STATE, action) {
         case 'SET_PRODUCTS':
             let regex = new RegExp(state.filterBy.text, "i");
             // let result = regex.test(product.decription)||regex.test(product.category);
-console.log('action.products',action.products)
             let filteredProducts = action.products.filter(product => {
-                console.log(state.filterBy.text, regex.test(product.category))
-                // console.log('filteredProducts',filteredProducts)
                 return regex.test(product.description) || regex.test(product.category)
             })
             filteredProducts = filteredProducts.filter(product => {
@@ -36,10 +33,15 @@ console.log('action.products',action.products)
                 return product.isBestSeller
             })
             filteredProducts = filteredProducts.filter(product => {
-                return product.rate>=+state.filterBy.minRate
+                return product.rate >= +state.filterBy.minRate
             })
             return {
                 ...state, products: filteredProducts
+            }
+        case 'SET-CART':
+
+            return {
+                ...state, cartItems: action.cart
             }
         case 'ADD_TO_CART':
             return {
@@ -47,7 +49,6 @@ console.log('action.products',action.products)
             }
         case 'REMOVE_FROM_CART':
             const idx = state.cartItems.findIndex(item => item.id === action.productId)
-            console.log('idx', idx)
             let newCart = [...state.cartItems]
             if (idx >= 0) newCart.splice(idx, 1)
             else console.warn(`cant remove item ${action.id} as it is not in the cart`)
@@ -55,7 +56,6 @@ console.log('action.products',action.products)
                 ...state, cartItems: newCart
             }
         case 'SET_FILTER_BY':
-            console.log(state.filterBy)
             return {
                 ...state, filterBy: { ...action.filterBy }
             }

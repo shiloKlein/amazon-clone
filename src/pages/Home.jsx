@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadProducts, setFilterBy } from '../store/actions/product.actions'
+import { loadProducts, setFilterBy, addToCart } from '../store/actions/product.actions'
 
 
 // import { loadRobots, removeRobot, setFilterBy } from '../store/actions/robot.actions'
@@ -26,29 +26,16 @@ export function Home() {
         // loadProducts()
         document.title = 'Amazon clone'
     }, [])
-    const addToCart = (product) => {
-        dispatch({
-            type: "ADD_TO_CART",
-            product
-        })
+    const onAddToCart = (product) => {
+        dispatch(addToCart(product))
+        
     }
     const onChangeFilter = (filterBy) => {
-        // dispatch({
-        //     type: "SET_FILTER_BY",
-        //     filterBy
-        // })
-        // loadProducts()
-        console.log(filterBy);
+    
         dispatch(setFilterBy(filterBy))
         dispatch(loadProducts())
     }
 
-    // async function loadProducts() {
-    //     await dispatch({
-    //         type: 'SET_PRODUCTS',
-    //     })
-    // }
-    // console.log(cartItems, 'cartItems');
 
     return (
         <>
@@ -60,7 +47,7 @@ export function Home() {
                     <img className="hero-img" src="https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673196706/amazon/amazon-hero_oukiiy.jpg" alt="bobo" />
                     <div>
                         <ProductFilter filterBy={filterBy} setFilterBy={setFilterBy} />
-                        {products && <List products={products} addToCart={addToCart}></List>}
+                        {products && <List products={products} addToCart={onAddToCart}></List>}
                     </div>
                 </div>
             </section>

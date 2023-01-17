@@ -1,5 +1,5 @@
 import React from 'react'
-const filterBy = null
+const filterBy = ''
 
 export function ProductFilter(props) {
     const filter = { ...props.filterBy }
@@ -13,7 +13,7 @@ export function ProductFilter(props) {
     return (
 
         <section className='product-filter'>
-            <input type="text" onChange={setFilter} value={filterBy} placeHolder="search for product" />
+            <input type="text" onChange={setFilter} value={filterBy} placeholder="search for product" />
         </section>
     )
 }

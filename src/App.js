@@ -1,4 +1,6 @@
 import { HashRouter as Router, Route, Routes, Switch } from 'react-router-dom'
+import { setUser } from './store/actions/user.actions'
+import { setCart } from './store/actions/product.actions'
 // import {loadStripe} from '@stripe/stripe-js'
 // import {Elements} from '@stripe/react-stripe-js'
 
@@ -17,19 +19,10 @@ function App() {
 
   useEffect(() => {
     auth.onAuthStateChanged(authUser => {
-      console.log('user logged in as', authUser)
-      if (authUser) {
-        dispatch({
-          type: "SET_USER",
-          user: authUser
-        })
-      } else {
-        dispatch({
-          type: "SET_USER",
-          user: null
-        })
-      }
+      if (authUser) dispatch(setUser(authUser))
+      else dispatch(setUser(null))
     })
+    dispatch(setCart())
   }, [])
 
   return (
