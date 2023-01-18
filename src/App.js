@@ -9,6 +9,7 @@ import { Home } from './pages/Home'
 import { Payment } from './pages/Payment'
 import { Checkout } from './pages/Checkout'
 import { Login } from './pages/Login.jsx'
+import { OrderListPage } from './pages/OrderListPage.jsx'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { auth } from './services/firebase'
@@ -34,6 +35,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/login" element={<Login />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/orders" element={<OrderListPage />} />
         </Routes>
         {/* <Footer></Footer> */}
       </div>

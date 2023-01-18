@@ -11,7 +11,6 @@ export function Header(props) {
     const dispatch = useDispatch()
     const cartItems = useSelector(state => state.cartModule.cartItems)
     const user = useSelector(state => state.userModule.loggedInUser)
-
     const handleAuth = () => {
         if (user) {
             auth.signOut()
@@ -44,12 +43,12 @@ export function Header(props) {
 
                         <Link to={!user && '/login'}><span >{user ? 'Log out' : 'Log in'}</span></Link>
                     </div>
-
+                    <NavLink to="/orders" >
                     <div className="header-option">
                         Returns
                         <span >& orders </span>
                     </div>
-
+                    </NavLink>
                     <div className="header-option">
                         Your
                         <span>Prime</span>

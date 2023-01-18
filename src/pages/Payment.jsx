@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
+import { addOrderToUser } from '../store/actions/user.actions'
 
 import { Header } from '../cmps/Header'
 import { DeliveryAdress } from '../cmps/DeliveryAdress'
@@ -22,7 +23,9 @@ export function Payment() {
         setTimeout(() => {
             navigate('/')
         }, 3000);
-        // cartItems dispatch to user db
+        dispatch(addOrderToUser(cartItems))
+        dispatch(addOrderToUser(cartItems))
+        dispatch({ type: 'SET_CART', cart:[] })
 
     }
 

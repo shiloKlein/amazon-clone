@@ -13,7 +13,8 @@
     padding: 0 !important;
     ul {
         padding: 0;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 650px));
+        grid-template-columns: minmax(150px, 650px);
+        // grid-template-rows: repeat(auto-fill);
         gap: 30px;
         place-content: center;
     }

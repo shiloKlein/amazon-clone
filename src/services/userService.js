@@ -1,13 +1,14 @@
 import {
     auth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-    db, collection, addDoc, getDocs, updateDoc, doc, deleteDoc, getDoc
+    db, collection, addDoc, getDocs, updateDoc, doc, deleteDoc, getDoc, setDoc
 } from './firebase'
+
 const dbColection = 'user'
 
 export const userService = {
     login,
     signup
-    , post, update, query, remove, getByEmail
+    , post, update, query, remove, getById
 }
 
 async function login(email, password) {
@@ -22,6 +23,7 @@ async function login(email, password) {
 async function signup(email, password) {
     try {
         const authRes = await createUserWithEmailAndPassword(auth, email, password)
+        
     } catch (err) {
         throw new Error(err.message)
     }
@@ -29,18 +31,22 @@ async function signup(email, password) {
 
 async function post(user) {
     try {
-        const docRef = await addDoc(collection(db, dbColection, user.username), user);
-        console.log("Document written with ID: ", docRef.id);
+        // Add a new document in collection "cities" with "LA" as id
+        console.log('user.email',user.email)
+await setDoc(doc(db, dbColection, user.email),{...user});
+        // const docRef = await addDoc(collection(db, dbColection), user);
+        // update(docRef.id)
+        // console.log("Document written with ID: ", docRef.id);
+
     } catch (e) {
         console.error("Error adding document: ", e);
     }
 }
-async function update(id) {
-    const washingtonRef = doc(db, dbColection, id);
-    // Set the "capital" field of the city 'DC'
-    await updateDoc(washingtonRef, {
-        capital: true
-    });
+async function update(id, orders) {
+    const user = doc(db, dbColection, id);
+    if (orders) await updateDoc(user, { prevOrders: orders });
+else await updateDoc(user, { id})
+    const newUser = await getById(id)
 
 }
 async function query() {
@@ -49,8 +55,9 @@ async function query() {
         console.log(`${doc.id} => ${doc.data()}`);
     });
 }
-async function getByEmail(email) {
-    const docRef = doc(db, dbColection, email);
+async function getById(id) {
+    // TODO:change the id variable to mail in all the relevent places
+    const docRef = doc(db, dbColection, id);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
         return docSnap.data();

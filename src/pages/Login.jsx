@@ -26,7 +26,7 @@ export function Login() {
 
     const signup = async (ev) => {
         try {
-            await userService.signup(email, password)
+            await userService.signup(email, password )
             dispatch(userSignUp(username, email, password))//needed because the auth procces of firebase dont allow saving more details on the user like prev orders
             navigate("/")
         } catch (err) {
@@ -45,7 +45,7 @@ export function Login() {
                 <form className='flex column align-center'>
 
                     <label htmlFor="username-input" >user name</label>
-                    <input type="text" value={email}
+                    <input type="text" value={username}
                         onChange={ev => setUsername(ev.target.value)}
                         placeholder='write your username here' required />
 

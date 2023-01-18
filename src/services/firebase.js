@@ -1,8 +1,8 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, updateDoc, getDocs, doc, deleteDoc, getDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, updateDoc, getDocs, doc, deleteDoc, getDoc, where , setDoc} from "firebase/firestore";
 
 
 
@@ -27,5 +27,5 @@ const auth = getAuth()
 
 export {
     db, auth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-    collection, addDoc, getDocs, updateDoc, doc, deleteDoc, getDoc
+    collection, addDoc, getDocs, updateDoc, doc, deleteDoc, getDoc, where, updateProfile, setDoc
 }

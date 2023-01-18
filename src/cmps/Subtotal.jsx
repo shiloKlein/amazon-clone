@@ -17,7 +17,7 @@ export function Subtotal(props) {
             </div>
             <div className='gift-input flex align-center'>
                 <input type="checkbox" id='gift-checkbox' />
-                <label for="gift-checkbox">
+                <label htmlFor="gift-checkbox">
                     This order contains a gift</label>
             </div>
             <button onClick={(ev) => navigate('/payment')}>checkout</button>

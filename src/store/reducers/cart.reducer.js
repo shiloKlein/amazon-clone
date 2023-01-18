@@ -38,10 +38,10 @@ export function cartReducer(state = INITIAL_STATE, action) {
             return {
                 ...state, products: filteredProducts
             }
-        case 'SET-CART':
+        case 'SET_CART':
 
             return {
-                ...state, cartItems: action.cart
+                ...state, cartItems: action.cart ?? []
             }
         case 'ADD_TO_CART':
             return {

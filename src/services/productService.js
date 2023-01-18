@@ -1,7 +1,8 @@
 import { db, collection, addDoc, getDocs, updateDoc, doc, deleteDoc, getDoc } from './firebase'
 
 export const productService = {
-    postProduct, putProduct, query, getById, remove, saveCartLocaly, getCartLocaly,removeFromCartLocaly,makeId
+    postProduct, query, getById, remove,
+    saveCartLocaly, getCartLocaly, removeFromCartLocaly, removeCartLocaly, makeId
 }
 const dbColection = 'product'
 
@@ -15,14 +16,13 @@ async function postProduct(product) {
         console.error("Error adding document: ", e);
     }
 }
-async function putProduct(id) {
-    const washingtonRef = doc(db, dbColection, id);
-    // Set the "capital" field of the city 'DC'
-    await updateDoc(washingtonRef, {
-        capital: true
-    });
-
-}
+// async function putProduct(id) {
+//     const washingtonRef = doc(db, dbColection, id);
+//     // Set the "capital" field of the city 'DC'
+//     await updateDoc(washingtonRef, {
+//         capital: true
+//     });
+// }
 
 async function query() {
     const products = []
@@ -44,26 +44,35 @@ async function getById(id) {
 async function remove(id) {
     await deleteDoc(doc(db, dbColection, id));
 }
+
 function getCartLocaly() {
     return JSON.parse(localStorage.getItem('cart'))
 }
+
 function saveCartLocaly(cart) {
     localStorage.setItem('cart', JSON.stringify(cart))
 }
+
 function removeFromCartLocaly(productId) {
-    const cart =  getCartLocaly()
-    const idx = cart.findIndex(item=>item.id===productId)
-    cart.splice(idx,1)
+    const cart = getCartLocaly()
+    const idx = cart.findIndex(item => item.id === productId)
+    cart.splice(idx, 1)
     localStorage.setItem('cart', JSON.stringify(cart))
 }
+
+function removeCartLocaly() {
+    console.log('blabla')
+    localStorage.removeItem('cart')
+}
+
 function makeId(length = 5) {
     var txt = ''
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
     for (var i = 0; i < length; i++) {
-      txt += possible.charAt(Math.floor(Math.random() * possible.length))
+        txt += possible.charAt(Math.floor(Math.random() * possible.length))
     }
     return txt
-  }
+}
 
 async function boo() {
     // try {

@@ -25,7 +25,7 @@ export function setCart() {
     return async (dispatch, getState) => {
         try {
             const cart = productService.getCartLocaly()
-            await dispatch({ type: "SET-CART", cart })
+            await dispatch({ type: "SET_CART", cart })
         } catch (err) {
             console.log('err:', err)
         }
