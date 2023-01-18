@@ -39,15 +39,15 @@ export function Header(props) {
 
                     <div className="header-option"
                         onClick={handleAuth}>
-                        {`hello ${user? user.username : 'guest'}`}
+                        {`hello ${user ? user.username : 'guest'}`}
 
-                        <Link to={!user && '/login'}><span >{user ? 'Log out' : 'Log in'}</span></Link>
+                        <Link to={user ? '/' : '/login'}><span >{user ? 'Log out' : 'Log in'}</span></Link>
                     </div>
                     <NavLink to="/orders" >
-                    <div className="header-option">
-                        Returns
-                        <span >& orders </span>
-                    </div>
+                        <div className="header-option">
+                            Returns
+                            <span >& orders </span>
+                        </div>
                     </NavLink>
                     <div className="header-option">
                         Your

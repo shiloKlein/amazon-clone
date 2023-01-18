@@ -18,9 +18,21 @@ export function setUser(user) {
         }
     }
 }
+// export function userlogin(email, password) {
+//     return async (dispatch, getState) => {
+//         await userService.login(email, password)
+//         const fullUser = await userService.getById(email)
+//         try {
+//             await userService.post(fullUser)
+//             dispatch({ type: "SET_USER", fullUser })
+//         } catch (err) {
+//             console.log('err:', err)
+//         }
+//     }
+// }
 export function userSignUp(username, email, password) {
     return async (dispatch, getState) => {
-        const fullUser = { username, email, password,prevOrders:null }
+        const fullUser = { username, email, password, prevOrders: null }
         try {
             await userService.post(fullUser)
             dispatch({ type: "SET_USER", fullUser })
@@ -56,11 +68,15 @@ export function addOrderToUser(order) {
     return async (dispatch, getState) => {
         try {
             productService.removeCartLocaly()
-            const user = { ...getState().userModule.loggedInUser }
-            if (!user.prevOrders) user.prevOrders = []
-            const newOrder = {...order, createdAt: Date.now()}
-user.prevOrders.unshift(newOrder)
-            userService.update(user.email, user.prevOrders)
+            const fullUser = { ...getState().userModule.loggedInUser }
+            if (!fullUser.prevOrders) fullUser.prevOrders = []
+            const newOrder = { ...order, createdAt: Date.now() }
+            fullUser.prevOrders.unshift(newOrder)
+            userService.update(fullUser.email, fullUser.prevOrders)
+            console.log('user', fullUser)
+            console.log('user.prevOreders', fullUser.prevOrders)
+            dispatch({ type: 'SET_USER', fullUser })
+            // debugger
             return 'hello'
         } catch (err) {
             console.log('err:', err)

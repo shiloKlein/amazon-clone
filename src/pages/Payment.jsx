@@ -24,8 +24,8 @@ export function Payment() {
             navigate('/')
         }, 3000);
         dispatch(addOrderToUser(cartItems))
-        dispatch(addOrderToUser(cartItems))
-        dispatch({ type: 'SET_CART', cart:[] })
+        // dispatch(addOrderToUser(cartItems))
+        dispatch({ type: 'SET_CART', cart:null })
 
     }
 

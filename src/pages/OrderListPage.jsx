@@ -7,6 +7,7 @@ import { Header } from '../cmps/Header'
 // const activeMap = [false, false, false, false, false, false, false, false, false, false]
 export function OrderListPage() {
     const user = useSelector(state => state.userModule.loggedInUser)
+    console.log(user);
     const [activeMap, setActiveMap] = useState([]);
     const [isOrderActive, setIsOrderActive] = useState(activeMap)
     // const ordersIdx = user?.prevOrders.map((order,idx)=>{return {idx:false}})

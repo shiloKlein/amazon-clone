@@ -61,7 +61,6 @@ function removeFromCartLocaly(productId) {
 }
 
 function removeCartLocaly() {
-    console.log('blabla')
     localStorage.removeItem('cart')
 }
 
