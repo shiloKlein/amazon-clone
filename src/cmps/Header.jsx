@@ -29,10 +29,10 @@ export function Header(props) {
 
                 <div className="header-search flex align-center">
                     {/* <input className="serch-input" type="text" /> */}
-                    <ProductFilter filterBy={props.filterBy} setFilterBy={props.setFilterBy} />
-                    <span className="material-symbols-outlined">
-                        search
-                    </span>
+                    {props.isFilter && <>   <ProductFilter filterBy={props.filterBy} setFilterBy={props.setFilterBy} />
+                        <span className="material-symbols-outlined">
+                            search
+                        </span></>}
                 </div>
 
                 <nav className="header-nav flex space-evenly">

@@ -8,12 +8,13 @@ export function ProductFilter(props) {
         ev.preventDefault()
         filter.text = ev.target.value
         props.setFilterBy(filter)
+        console.log(filter);
     }
 
     return (
 
         <section className='product-filter'>
-            <input type="text" onChange={setFilter} value={filterBy} placeholder="search for product" />
+            <input type="text" onChange={setFilter} value={filter.text } placeholder="search for product" />
         </section>
     )
 }

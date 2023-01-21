@@ -1,11 +1,16 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
+
 
 
 export function Preview(props) {
+    const navigate = useNavigate()
+
     const { product } = props
 
     return (
-        <section className='product-preview flex column space-between'>
+        
+        <section className='product-preview flex column space-between' onClick={()=>navigate(`/product/${product.id}`)}>
             {product.isAmazonChoise && !product.isBestSeller &&
                 <span className='amazon-choise'>
                     <span className="">Amazon's </span>

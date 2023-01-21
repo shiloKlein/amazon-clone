@@ -2,7 +2,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, updateDoc, getDocs, doc, deleteDoc, getDoc, where , setDoc} from "firebase/firestore";
+import { getFirestore, collection, addDoc, updateDoc, getDocs, doc, deleteDoc, getDoc, where, setDoc } from "firebase/firestore";
 
 
 
@@ -23,7 +23,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth()
 
-
+// const update='update'
 
 export {
     db, auth, createUserWithEmailAndPassword, signInWithEmailAndPassword,

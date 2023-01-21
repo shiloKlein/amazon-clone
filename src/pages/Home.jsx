@@ -39,14 +39,14 @@ export function Home() {
 
     return (
         <>
-            <Header filterBy={filterBy} setFilterBy={onChangeFilter} />
+            <Header filterBy={filterBy} setFilterBy={onChangeFilter} isFilter={true} />
 
             <section className='home flex full'>
                 <SideFilter filterBy={filterBy} setFilterBy={onChangeFilter} />
                 <div className="home-container flex column">
                     <img className="hero-img" src="https://res.cloudinary.com/dtcqwwf0m/image/upload/v1673196706/amazon/amazon-hero_oukiiy.jpg" alt="bobo" />
                     <div>
-                        <ProductFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+                        {/* <ProductFilter filterBy={filterBy} setFilterBy={setFilterBy} /> */}
                         {products && <List products={products} addToCart={onAddToCart}></List>}
                     </div>
                 </div>

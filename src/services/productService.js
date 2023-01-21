@@ -23,24 +23,42 @@ async function postProduct(product) {
 //         capital: true
 //     });
 // }
-
+// async function query() {
+//     const products = []
+//     const querySnapshot = await db.collection(dbColection).get();
+//     querySnapshot.forEach(async (doc) => {
+//         console.log('doc', doc.id)
+//         await doc.ref.update({ id: doc.id });
+//         products.push(doc.data())
+//     });
+//     return products;
+// }
 async function query() {
     const products = []
     const querySnapshot = await getDocs(collection(db, dbColection));
-    querySnapshot.forEach((doc) => {
+    querySnapshot.forEach(async (doc) => {
         products.push(doc.data())
     });
     return products;
 }
+// async function update(id, orders) {
+//     const user = doc(db, dbColection, id);
+//     if (orders) await updateDoc(user, { prevOrders: orders });
+//     else await updateDoc(user, { id })
+//     const newUser = await getById(id)
+
+// }
 async function getById(id) {
     const docRef = doc(db, dbColection, id);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
         console.log("Document data:", docSnap.data());
+        return docSnap.data()
     } else {
         console.log("No such document!");
     }
 }
+
 async function remove(id) {
     await deleteDoc(doc(db, dbColection, id));
 }

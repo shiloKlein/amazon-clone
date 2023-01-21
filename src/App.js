@@ -9,6 +9,7 @@ import { Home } from './pages/Home'
 import { Payment } from './pages/Payment'
 import { Checkout } from './pages/Checkout'
 import { Login } from './pages/Login.jsx'
+import { ProductDetails } from './pages/ProductDetails.jsx'
 import { OrderListPage } from './pages/OrderListPage.jsx'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -32,6 +33,7 @@ function App() {
         {/* <Header/> */}
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/product/:productId" element={<ProductDetails />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/login" element={<Login />} />
           <Route path="/payment" element={<Payment />} />
