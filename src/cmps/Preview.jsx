@@ -31,7 +31,7 @@ export function Preview(props) {
             {/* <img className='stars' src={stars()} alt="" /> */}
             {product.price && <p><span>price:</span> {`$${product.price}`}</p>}
             {/* if homepage */}
-            {props.addToCart && <button className='add-to-cart-btn' onClick={() => props.addToCart(product)}>Add to cart</button>}
+            {props.addToCart && <button className='add-to-cart-btn' onClick={(ev) => props.addToCart(ev,product)}>Add to cart</button>}
             {/* if checkout page */}
             {props.removeFromCart && <button className='remove-from-cart-btn' onClick={() => props.removeFromCart(product.id)}>Remove from cart</button>}
 

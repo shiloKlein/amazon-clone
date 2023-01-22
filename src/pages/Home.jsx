@@ -26,7 +26,8 @@ export function Home() {
         // loadProducts()
         document.title = 'Amazon clone'
     }, [])
-    const onAddToCart = (product) => {
+    const onAddToCart = (ev,product) => {
+        ev.stopPropagation()
         dispatch(addToCart(product))
         
     }

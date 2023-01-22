@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { auth } from '../services/firebase'
 
 import { ProductFilter } from './ProductFilter'
+import { Subtotal } from './Subtotal'
 
 import logo from '../assets/imgs/logo/header-logo.png'
 import React from 'react'
@@ -28,11 +29,12 @@ export function Header(props) {
                 </Link>
 
                 <div className="header-search flex align-center">
-                    {/* <input className="serch-input" type="text" /> */}
                     {props.isFilter && <>   <ProductFilter filterBy={props.filterBy} setFilterBy={props.setFilterBy} />
                         <span className="material-symbols-outlined">
                             search
                         </span></>}
+
+                    {props.isPayment && <Subtotal  isPayment={true} cartItems={cartItems} />}
                 </div>
 
                 <nav className="header-nav flex space-evenly">

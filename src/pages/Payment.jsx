@@ -5,6 +5,7 @@ import { addOrderToUser } from '../store/actions/user.actions'
 
 import { Header } from '../cmps/Header'
 import { DeliveryAdress } from '../cmps/DeliveryAdress'
+import { Subtotal } from '../cmps/Subtotal'
 import { OrderLIst } from '../cmps/OrderLIst'
 import { PaymentDetails } from '../cmps/PaymentDetails'
 import { useNavigate } from 'react-router-dom'
@@ -42,12 +43,12 @@ export function Payment() {
 
 
 
-            <Header />
+            <Header isPayment={true} />
             <section className='payment-page'>
                 <div className="payment-container">
                     <DeliveryAdress user={user} />
                     <OrderLIst cartItems={cartItems} removeFromCart={removeFromCart} />
-                    <PaymentDetails makeOrder={makeOrder} />
+                    <PaymentDetails makeOrder={makeOrder} cartItems={cartItems} />
 
                 </div>
 

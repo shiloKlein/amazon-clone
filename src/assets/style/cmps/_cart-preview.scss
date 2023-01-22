@@ -46,9 +46,20 @@
         background-color: rgba(255, 255, 255, 0.974);
     }
 
+    button {
+        background-color: $thirtriary-orange;
+        border: none;
+        border-radius: 2px;
+
+        &:hover {cursor: pointer;
+            background-color:darken($thirtriary-orange, 5%)
+        }
+
+    }
+
     &.payment {
     button{
-    width: 40%;
+    width: 35%;
     align-self: center;
     }
     }

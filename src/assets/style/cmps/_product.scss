@@ -17,9 +17,15 @@
         object-fit: contain;
         padding-bottom: 15px;
     }
-    button{
-    background-color: #f0c14b;
-    border:1px solid;
-    border-color: #a88734 #9c7e31 #846a29;
+    button {
+        background-color: $secondery-orange;
+        border: none;
+        border-radius: 2px;
+        height: 30px;
+
+        &:hover {cursor: pointer;
+            background-color:darken($secondery-orange, 5%)
+        }
+
     }
 }

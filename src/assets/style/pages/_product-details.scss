@@ -1,0 +1,71 @@
+.product-details {
+    padding-top: 40px;
+
+    .product-details-container {
+        padding-top: 40px;
+        gap: 20px;
+
+        img {
+            width: 60%;
+            // min-width: 300px;
+            object-fit: cover;
+            padding: 10px;
+        }
+
+        .description {
+            font-size: 1.2em;
+            font-weight: bold;
+            line-height: 1.3em;
+
+            div {}
+        }
+
+        div {
+            .price {
+            font-weight: bold;
+            }
+        }
+
+        .star {
+            color: $secondery-orange;
+            font-variation-settings:
+                'FILL' 1,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 48;
+        }
+
+        @media(max-width:1000px) {
+            margin: auto;
+            flex-direction: column;
+            align-items: center;
+            width: 80%;
+        }
+
+        @media(max-width:1000px) {
+            flex-direction: column;
+            width: 80%;
+        }
+    }
+
+}
+
+.visit-link {
+    color: blue;
+    text-decoration: underline;
+
+    &:hover {
+        color: purple;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    &:active {
+        color: red;
+    }
+
+    &:visited {
+        color: green;
+        text-decoration: none;
+    }
+}

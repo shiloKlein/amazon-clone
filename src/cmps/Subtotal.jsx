@@ -10,17 +10,17 @@ export function Subtotal(props) {
     }
 
     return (
-        <section className='subtotal flex column space-between'>
+        <section className={`${props.isPayment?'payment ':''}subtotal flex column space-between`}>
             <div className="flex">
                 <p>Subtotal ({`${itemsCount}  ${itemsCount === 1 ? 'item' : 'items'}`}) <span>{'$' + calcTotal()}</span></p>
                 {/* <p>$100</p> */}
             </div>
-            <div className='gift-input flex align-center'>
+            {!props.isPayment && <><div className='gift-input flex align-center'>
                 <input type="checkbox" id='gift-checkbox' />
                 <label htmlFor="gift-checkbox">
                     This order contains a gift</label>
             </div>
-            <button onClick={(ev) => navigate('/payment')}>checkout</button>
+                <button onClick={(ev) => navigate('/payment')}>checkout</button></>}
         </section>
     )
 }

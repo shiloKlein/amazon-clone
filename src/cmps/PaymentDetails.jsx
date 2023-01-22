@@ -1,10 +1,14 @@
 import React from 'react'
 
 export function PaymentDetails(props) {
+  const calcTotal = () => {
+    return props.cartItems.reduce((acc, item) => acc + item.price || 0, 0)
+}
   return (
     <section className='payment-details'>
       <h3>Payment method</h3>
       <div>
+        <p className='total'>Total: <span> $</span>{calcTotal()}</p>
         <p>Credit card / Debit card</p>
 
         <form className='payment-form' onSubmit={(ev)=>props.makeOrder(ev)}>

@@ -16,9 +16,20 @@
         border-radius: 2px;
         height: 30px;
 
-        &:hover {cursor: pointer;
-            background-color:darken($secondery-orange, 5%)
+        &:hover {
+            cursor: pointer;
+            background-color: darken($secondery-orange, 5%)
         }
 
+    }
+
+    &.payment {
+        height: 100%;
+        width: 100%;
+        background-color: transparent;
+        
+        div{
+            justify-content: center;
+        }
     }
 }
